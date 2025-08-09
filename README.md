@@ -29,4 +29,4 @@ Note that HQNN-Quanv model uses Initial_lr = 0.003, and the model's loss functio
 
 
 
-Dataset run in the HQNN file: https://www.kaggle.com/datasets/hojjatk/mnist-dataset
+Dataset run in the HQNN-QUANV file: https://www.kaggle.com/datasets/hojjatk/mnist-dataset
