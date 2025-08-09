@@ -1,69 +1,28 @@
-# Quantum Task Allocation Algorithm
+## Hybrid quantum classical models for image classification
 
-# 🧑‍🔬 Research Team GitHub Guide - Reccomendations
+The python code implements the hybrid quantum-classical models from the paper "Quantum machine learning for image classification" by Arsenii Senokosov et al (https://arxiv.org/pdf/2304.09224.pdf) 
 
-Welcome to your research repository! This guide will help you work together using Git and GitHub — no prior experience needed. Feel free to modify this, it's only for your introduction to your team's repo.
+The paper proposes two hybrid quantum-classical models for image classification:
 
----
+1. **Hybrid Quantum Neural Network with parallel quantum dense layers, HQNN-Parallel**:
 
-## 🚀 Getting Started
+HQNN-Parallel is a hybrid quantum-classical model that utilizes multiple parallel quantum dense layers for image classification tasks. The classical convolutional block reduces the dimensionality of the input image, and the parallel quantum dense layers extract and process features from the reduced representation.
 
-**Clone your repository** to your computer:
-   ```bash
-   git clone https://github.com/YOUR-ORG-NAME/YOUR-TEAM-REPO.git
-   ```
+The model is evaluated on the MNIST dataset of handwritten digits and compared with the performance of the classical convolutional neural networks (CNNs) with similar architectures.
 
-## 🌿 Branching Workflow
-Always work on a separate branch. Never push directly to main.
+The classical convolutional neural network is implemented in `` ImgClass-Classical.ipynb `` and the HQNN-Parallel is implemented in `` ImgClass-Hybrid.ipynb ``
 
-1. Create a new branch for each task or feature
-bash
-    ```bash
-    git checkout -b feature-your-name
+**Result**: The classical convolutional neural network gives an accurancy of 99.20% and the HQNN-Parallel (with ``n_layers = 1`` instead of ``n_layers = 3`` as used in the paper) gives an accuracy of 99.17%
 
-2. Make your changes locally
-Work on your files as needed — save your progress often.
 
-3. Stage and commit your changes
-    ```bash
-    git add .
-    git commit -m "Your descriptive commit message"
+2. **Hybrid Quantum Neural Network with quanvolutional layer, HQNN-Quanv**:
 
-4. Push your branch to GitHub
-    ```bash
-    git push origin feature-your-name
+HQNN-Quanv is a hybrid quantum-classical model that combines a quanvolutional layer with classical fully connected layers to address the image classification task. The quanvolutional layer utilizes quantum mechanics to extract features from the input image, while the classical fully connected layers process and classify these features.
 
-5. Open a Pull Request (PR)
-    - Go to the repo on GitHub
-    - Click "Compare & pull request"
-    - Add a short description of your changes
-    - Tag a teammate to review it
+The model is evaluated on the MNIST dataset of handwritten digits and compared with the performance of the classical convolutional neural networks with similar architectures. Particularly with, CNN1- Convolutional kernel with 1 input channel, 1 output channel and CNN4- Convolutional kernel with 1 input channel, 4 output channels. 4 x 4 kernels are used. 
 
-Once approved, it can be safely merged into main.
+The classical convolutional neural network is implemented in `` CNN1.ipynb `` and `` CNN4.ipynb ``, the HQNN-Quanv is implemented in `` HQNN-Quanv.ipynb ``
 
-## 📌 Commit Message Tips
-Write clear, useful messages that explain what and why, like:
+**Result**: CNN1 gives an accuracy of 79%, CNN4 gives an accuracy of 67% and the HQNN-Quanv had an accuracy of 70% (see ``dataset_indices_500.pt``). 
 
-- `Add quantum state simulation function`
-- `Fix matrix dimensions in tensor product`
-- `Update README with cloning instructions`
-
-## 🔁 Keeping Your Repo Up to Date
-Always sync with the main branch before starting new work:
-```bash
-  git checkout main
-  git pull origin main
-  Then create your feature branch from the updated main.
-  ```
-
-## 🧠 Best Practices
-- ✅ One branch per feature or fix
-- ✅ Pull frequently to avoid merge conflicts
-- ✅ Keep your code well-commented and organized
-- ✅ Use README.md for explanations
-- ✅ Track bugs, tasks, or ideas with GitHub Issues
-- ✅ Communicate often in your team chat and meetings, get to know eachother outside of work (lunch, dinner, night on the town)
-
-## 💬 Need Help?
-Ask questions in your team chat, or bring them to your next Advisory or Working Meeting.
-
+Note that HQNN-Quanv model uses Initial_lr = 0.003, and the model's loss function seems to be very sensitive to small changes (+/- 0.0005) to Initial_lr, significantly impacting the accuracy (which gets to 58% for Initial_lr = 0.0035, or 45% for Initial_lr = 0.0025, for example). See ``hqcnn quanv output.txt`` for some outputs of HQNN-Quanv model training run). 
