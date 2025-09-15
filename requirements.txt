@@ -1,0 +1,30 @@
+# Core quantum computing framework
+qiskit>=0.45.0
+
+# Optional Qiskit extras you might need
+qiskit-aer>=0.12.0          # Simulator backend
+qiskit-ibmq-provider>=0.20  # If you want access to IBM Quantum devices
+qiskit-machine-learning>=0.6.0  # VQC, NeuralNetworkClassifier, etc.
+
+# Optimization libraries
+scipy>=1.11.0               # COBYLA, SLSQP, etc.
+numpy>=1.27.0               # Numerical computations
+
+# Plotting / visualization
+matplotlib>=3.8.0
+seaborn>=0.12.2             # Optional, for nicer plots
+
+# Data handling
+pandas>=2.0.0
+
+# Optional for progress bars
+tqdm>=4.66.0
+
+# Optional for advanced machine learning
+scikit-learn>=1.3.0
+
+# Optional: if you are using ADAM optimizer from Qiskit
+optuna>=3.2.0
+
+# Optional: type hints and development tools
+mypy>=1.5.2
