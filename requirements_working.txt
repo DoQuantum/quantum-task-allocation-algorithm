@@ -1,0 +1,10 @@
+# Working requirements for PennyLane quantum classifier
+pennylane
+pennylane-lightning
+numpy
+scipy
+matplotlib
+pandas
+scikit-learn
+jupyter
+networkx
